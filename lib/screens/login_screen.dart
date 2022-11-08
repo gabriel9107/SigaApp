@@ -49,9 +49,11 @@ class LoginScreen extends StatelessWidget {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // final loginForm = promiseToFuture(jsPromise)
+    final loginForm = Provider.of<LoginFormProvider>(context);
+
     return Container(
       child: Form(
+          key: loginForm.formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
@@ -90,7 +92,11 @@ class _LoginForm extends StatelessWidget {
                     child:
                         Text('Ingresar', style: TextStyle(color: Colors.white)),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    FocusScope.of(context).unfocus();
+                    if (!loginForm.isValidForm()) return;
+                    Navigator.pushReplacementNamed(context, 'home');
+                  }),
             ],
           )),
     );
