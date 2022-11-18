@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/screens/home_screen.dart';
 import 'package:flutter_application_2/screens/user_scren.dart';
 
+import 'data_tabla.dart';
+
 class NavigationDrawer extends StatelessWidget {
   // const NavigationDrawer({Key? key}) : super(key: key)
 
@@ -66,10 +68,12 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => HomeScreen(),
                   ))),
           ListTile(
-            leading: const Icon(Icons.person_add),
-            title: const Text('Clientes'),
-            onTap: () {},
-          ),
+              leading: const Icon(Icons.person_add),
+              title: const Text('Clientes'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => DataTableDemo(),
+                  ))),
           ListTile(
             leading: const Icon(Icons.point_of_sale_sharp),
             title: const Text('Pedidos de Venta'),
