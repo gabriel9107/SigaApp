@@ -38,7 +38,13 @@ dependencies:
 
 dev_dependencies:
   sqflite: ^2.2.0+3
+  path_provider: 2.0.11
+  intl: 0.17.0
+  flutter_local_notifications: ^9.3.3
 
+  
+  
+  
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -63,6 +69,8 @@ flutter:
   assets:
     - assets/imagenes/
     - assets/icons/    
+    - assets/Siga.db
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

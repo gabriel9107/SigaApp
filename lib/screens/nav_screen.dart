@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screens/customer_list.dart';
 import 'package:flutter_application_2/screens/home_screen.dart';
+import 'package:flutter_application_2/screens/products_screen.dart';
 import 'package:flutter_application_2/screens/user_scren.dart';
-
-import 'data_tabla.dart';
 
 class NavigationDrawer extends StatelessWidget {
   // const NavigationDrawer({Key? key}) : super(key: key)
@@ -72,7 +72,7 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Clientes'),
               onTap: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => DataTableDemo(),
+                    builder: (context) => CustomerList(),
                   ))),
           ListTile(
             leading: const Icon(Icons.point_of_sale_sharp),
@@ -80,10 +80,12 @@ class NavigationDrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.production_quantity_limits),
-            title: const Text('Productos'),
-            onTap: () {},
-          ),
+              leading: const Icon(Icons.production_quantity_limits),
+              title: const Text('Productos'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => ProductsList(),
+                  ))),
           ListTile(
             leading: const Icon(Icons.padding_outlined),
             title: const Text('Reporte'),

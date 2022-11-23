@@ -29,19 +29,19 @@ class DataTableDemoState extends State<DataTableDemo> {
                   TextStyle(fontWeight: FontWeight.w400, color: Colors.black),
             ),
             numeric: true,
-            tooltip: "This is First Name"),
+            tooltip: "Id del cliente"),
         DataColumn(
             label: Text("Cliente"),
             numeric: true,
-            tooltip: "This is Last Name"),
+            tooltip: "Nombre del cliente"),
         DataColumn(
             label: Text('Descuento'),
             numeric: false,
-            tooltip: 'El descuento del Cliente'),
+            tooltip: 'descuento del cliente'),
         DataColumn(
-            label: Text('Rnc_Cedula'),
+            label: Text('Rnc / Cedula'),
             numeric: false,
-            tooltip: 'El descuento del Cliente')
+            tooltip: 'Rnc o Cedula ')
       ],
       rows: Clients.map(
         (clients) => DataRow(cells: [
@@ -93,7 +93,7 @@ class DataTableDemoState extends State<DataTableDemo> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const NewClient()),
+                          builder: (context) => NewClient('Test')),
                     );
                   },
                   child: Icon(Icons.add, color: Colors.white),
