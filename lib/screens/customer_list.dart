@@ -6,6 +6,7 @@ import 'package:flutter_application_2/provider/db_helper.dart';
 import 'package:flutter_application_2/screens/data_tabla.dart';
 import 'package:flutter_application_2/screens/nav_screen.dart';
 import 'package:flutter_application_2/screens/new_cliente.dart';
+import 'package:flutter_application_2/screens/pedidosPasos.dart';
 
 class CustomerList extends StatefulWidget {
   @override
@@ -59,9 +60,58 @@ class CustomerListState extends State<CustomerList> {
                 ? Center(child: Text('No existen clientes en el momento...'))
                 : ListView(
                     children: snapshot.data!.map((customer) {
-                      return Center(
+                      return Card(
+                        color: Colors.white,
+                        elevation: 2.0,
                         child: ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            child: Icon(Icons.emoji_people),
+                          ),
                           title: Text(customer.CustomerName),
+                          subtitle: Text(
+                              customer.CustomerDir + ' | ' + customer.Phone1),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              IconButton(
+                                icon: Icon(
+                                  Icons.point_of_sale,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => PedidosPasos()),
+                                  );
+
+                                  //   _onDeleteItemPressed(index);
+                                },
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.edit,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            NewClient('Editar Cliente')),
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      NewClient('Editar Cliente')),
+                            );
+                            // NavigateDetail('Edit Product');
+                          },
                         ),
                       );
                     }).toList(),
