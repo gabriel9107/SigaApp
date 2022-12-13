@@ -7,7 +7,7 @@ class PedidosPasos extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text('Siga Mobile - Pedidos'),
+          title: Text(' SigaApp - Pedidos'),
           backgroundColor: Color.fromARGB(255, 25, 28, 228)),
       drawer: NavigationDrawer(),
       body: MiPedidos(),
@@ -24,7 +24,7 @@ class _MiPedidoState extends State<MiPedidos> {
   int _currentstep = 0;
 
   Widget build(BuildContext context) {
-    final halfMediaWidth = MediaQuery.of(context).size.width / 2.0;
+    // final halfMediaWidth = MediaQuery.of(context).size.width / 2.0;
     return Scaffold(
       body: Container(
           child: Column(
@@ -70,19 +70,36 @@ class _MiPedidoState extends State<MiPedidos> {
                   content: Column(
                     children: [
                       Container(
+                          child: SizedBox(
+                        child: MiPedidos(),
+                      )),
+                      Container(
                         alignment: Alignment.topCenter,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
                               alignment: Alignment.topCenter,
-                              width: 450,
-                              child: MyTextFormField(hintText: 'Producto'),
+                              width: 350,
+                              child: autocompleteProducto(),
+                              // MyTextFormField(hintText: 'Producto'),
                             ),
                             Container(
                               alignment: Alignment.topCenter,
-                              width: 200,
+                              width: 130,
                               child: MyTextFormField(hintText: 'Cantidad'),
+                            ),
+                            Container(
+                              alignment: Alignment.topCenter,
+                              width: 130,
+                              child: ElevatedButton(
+                                child: Text('Agregar'),
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                    textStyle: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
+                              ),
                             )
                           ],
                         ),
@@ -130,6 +147,34 @@ class MyTextFormField extends StatelessWidget {
           fillColor: Colors.grey[200],
         ),
       ),
+    );
+  }
+}
+
+class autocompleteProducto extends StatelessWidget {
+  const autocompleteProducto({super.key});
+
+  static const List<String> _kOptions = <String>[
+    'Tv',
+    'Abanico',
+    'Telefono',
+    'Pantalla'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Autocomplete<String>(
+      optionsBuilder: (TextEditingValue textEditingValue) {
+        if (textEditingValue.text == '') {
+          return const Iterable<String>.empty();
+        }
+        return _kOptions.where((String option) {
+          return option.contains(textEditingValue.text.toLowerCase());
+        });
+      },
+      onSelected: (String selection) {
+        debugPrint('You just selected $selection');
+      },
     );
   }
 }

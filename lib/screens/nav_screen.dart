@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/screens/customer_list.dart';
 import 'package:flutter_application_2/screens/home_screen.dart';
+import 'package:flutter_application_2/screens/pedidosp.dart';
 import 'package:flutter_application_2/screens/products_screen.dart';
 import 'package:flutter_application_2/screens/user_scren.dart';
 
@@ -75,10 +76,12 @@ class NavigationDrawer extends StatelessWidget {
                     builder: (context) => CustomerList(),
                   ))),
           ListTile(
-            leading: const Icon(Icons.point_of_sale_sharp),
-            title: const Text('Pedidos de Venta'),
-            onTap: () {},
-          ),
+              leading: const Icon(Icons.point_of_sale_sharp),
+              title: const Text('Pedidos de Venta'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => pedidop(),
+                  ))),
           ListTile(
               leading: const Icon(Icons.production_quantity_limits),
               title: const Text('Productos'),
